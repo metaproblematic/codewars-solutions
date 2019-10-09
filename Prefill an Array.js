@@ -10,10 +10,11 @@ When throwing a TypeError, the message should be n is invalid, where you replace
 
 function prefill(n, v) {
 
-    if (isNaN(n)) {
-        throw new TypeError(`${n} is invalid`);
-    }
-    let arr = new Array(n).fill(v);
+    let num = parseFloat(n);
 
-    return arr;
+    if ((typeof (num) == 'number') && (isFinite(num)) && (num >= 0) && (Math.floor(num) === num)) {
+        return Array(num).fill(v);
+    } else {
+        throw new TypeError(n + ' is invalid');
+    }
 }
